@@ -1,0 +1,235 @@
++ cd /ocean/projects/med220004p/nesper/NuisanceRegression
++ singularity run -e -B /ocean/projects/med220004p/nesper/NuisanceRegression/results/fmriprep_nuisance:/outputs/ -B /ocean/projects/med220004p/nesper/tmp:/tmp -B /ocean/projects/med220004p/nesper/NuisanceRegression/pipelines:/configs ../singularity_images/cpac.sif subjects_dir /outputs participant --pipeline_file /configs/cpac-fmriprep-nuisance.yml --n_cpus 20 --mem_gb 15 --num_ants_threads 3 --skip_bids_validator --save_working_dir
+
+Skipping bids-validator...
+#### Running C-PAC
+Number of participants to run in parallel: 1
+Input directory: /ocean/projects/med220004p/nesper/NuisanceRegression/subjects_dir
+Output directory: /outputs/output
+Working directory: /outputs/working
+Log directory: /outputs/log
+Remove working directory: False
+Available memory: 15.0 (GB)
+Available threads: 20
+Number of threads for ANTs: 3
+Parsing /ocean/projects/med220004p/nesper/NuisanceRegression/subjects_dir..
+Starting participant level processing
+Run called with config file /outputs/cpac_pipeline_config_2022-09-24T22-43-49Z.yml
+220924-22:43:54,701 nipype.workflow INFO:
+	 
+    Run command: run subjects_dir /outputs participant --pipeline_file /configs/cpac-fmriprep-nuisance.yml --n_cpus 20 --mem_gb 15 --num_ants_threads 3 --skip_bids_validator --save_working_dir
+
+    C-PAC version: 1.8.4
+
+    Copyright (C) 2022  C-PAC Developers.
+    
+    This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+    and you are welcome to redistribute it under certain conditions. For
+    details, see https://fcp-indi.github.io/docs/v1.8.4/license or the COPYING and
+    COPYING.LESSER files included in the source code.
+
+    Setting maximum number of cores per participant to 20
+    Setting number of participants at once to 1
+    Setting OMP_NUM_THREADS to 1
+    Setting MKL_NUM_THREADS to 1
+    Setting ANTS/ITK thread usage to 3
+    Maximum potential number of cores that might be used during this run: 20
+
+
+220924-22:43:56,186 nipype.utils WARNING:
+	 A newer version (1.8.4) of nipy/nipype is available. You are using 1.5.1
+
+Output directory /outputs/output does not exist yet, initializing.
+220924-22:43:56,231 nipype.workflow INFO:
+	 Connecting pipeline blocks:
+	 - anatomical_init
+	 - freesurfer_preproc
+	 - acpc_align_head
+	 - non_local_means
+	   - T1w
+	     - desc-preproc_T1w
+	       - desc-reorient_T1w
+	       - T1w
+	 - n4_bias_correction
+	 - freesurfer_abcd_preproc
+	 - brain_mask_afni
+	   - brain_mask_fsl
+	   - brain_mask_niworkflows_ants
+	   - brain_mask_unet
+	   - brain_mask_freesurfer_abcd
+	   - brain_mask_freesurfer_fsl_tight
+	   - brain_mask_freesurfer_fsl_loose
+	 - brain_extraction
+	 - brain_mask_T2
+	 - brain_extraction_T2
+	 - register_ANTs_anat_to_template
+	   - register_FSL_anat_to_template
+	 - overwrite_transform_anat_to_template
+	 - correct_restore_brain_intensity_abcd
+	 - tissue_seg_fsl_fast
+	   - tissue_seg_ants_prior
+	 - func_scaling
+	 - func_truncate
+	 - get_motion_ref
+	 - func_motion_estimates
+	 - motion_estimate_filter
+	 - func_despike
+	 - func_slice_time
+	 - func_reorient
+	 - func_mean
+	 - func_motion_correct_only
+	 - bold_mask_afni
+	   - bold_mask_fsl
+	   - bold_mask_fsl_afni
+	   - bold_mask_anatomical_refined
+	   - bold_mask_anatomical_based
+	   - bold_mask_anatomical_resampled
+	   - bold_mask_ccs
+	 - bold_masking
+	 - calc_motion_stats
+	 - func_normalize
+	 - coregistration_prep_vol
+	   - coregistration_prep_mean
+	   - coregistration_prep_fmriprep
+	 - coregistration
+	 - register_ANTs_EPI_to_template
+	   - register_FSL_EPI_to_template
+	 - create_func_to_T1template_xfm
+	 - ICA_AROMA_ANTsreg
+	 - ICA_AROMA_FSLreg
+	 - ICA_AROMA_ANTsEPIreg
+	 - ICA_AROMA_FSLEPIreg
+	 - erode_mask_T1w
+	 - erode_mask_CSF
+	 - erode_mask_GM
+	 - erode_mask_WM
+	 - erode_mask_bold
+	 - erode_mask_boldCSF
+	 - erode_mask_boldGM
+	 - erode_mask_boldWM
+	 - nuisance_regressors_generation
+	   - desc-preproc_bold
+	     - desc-preproc_bold
+	       - bold
+	 - nuisance_regression
+	   - desc-preproc_bold
+	     - desc-preproc_bold
+	       - bold
+	 - warp_timeseries_to_T1template
+	   - warp_timeseries_to_T1template_dcan_nhp
+	   - warp_timeseries_to_T1template_abcd
+	     - desc-cleaned_bold
+	       - bold
+	   - single_step_resample_timeseries_to_T1template
+	 - warp_bold_mean_to_T1template
+	 - warp_bold_mean_to_EPItemplate
+	 - warp_bold_mask_to_T1template
+	 - warp_deriv_mask_to_T1template
+	 - warp_bold_mask_to_EPItemplate
+	 - warp_deriv_mask_to_EPItemplate
+	 - surface_postproc
+	 - timeseries_extraction_AVG
+	 - alff_falff
+	 - reho
+	 - smooth_func_vmhc
+	 - warp_timeseries_to_sym_template
+	 - vmhc
+	 - network_centrality
+	 
+220924-22:43:56,232 nipype.workflow INFO:
+	 Connecting anatomical_init...
+220924-22:43:56,234 nipype.workflow INFO:
+	 Connecting brain_mask_niworkflows_ants...
+220924-22:43:56,467 nipype.workflow INFO:
+	 Connecting brain_extraction...
+220924-22:43:56,469 nipype.workflow INFO:
+	 Connecting register_ANTs_anat_to_template...
+220924-22:43:56,507 nipype.workflow INFO:
+	 Connecting tissue_seg_fsl_fast...
+220924-22:43:56,525 nipype.workflow INFO:
+	 Connecting func_truncate...
+220924-22:43:56,530 nipype.workflow INFO:
+	 Connecting get_motion_ref...
+220924-22:43:56,533 nipype.workflow INFO:
+	 Connecting motion_estimates...
+220924-22:43:56,540 nipype.workflow INFO:
+	 Connecting func_slice_time...
+220924-22:43:56,543 nipype.workflow INFO:
+	 Connecting func_reorient...
+220924-22:43:56,544 nipype.workflow INFO:
+	 Connecting func_mean...
+220924-22:43:56,545 nipype.workflow INFO:
+	 Connecting motion_correction_only...
+220924-22:43:56,553 nipype.workflow INFO:
+	 Connecting bold_mask_fsl_afni...
+220924-22:43:56,561 nipype.workflow INFO:
+	 Connecting bold_masking...
+220924-22:43:56,562 nipype.workflow INFO:
+	 Connecting calc_motion_stats...
+220924-22:43:56,570 nipype.workflow INFO:
+	 Connecting coregistration_prep_fmriprep...
+220924-22:43:56,571 nipype.workflow INFO:
+	 Connecting coregistration...
+220924-22:43:56,585 nipype.workflow INFO:
+	 Connecting create_func_to_T1template_xfm...
+220924-22:43:56,592 nipype.workflow INFO:
+	 Connecting erode_mask_T1w...
+220924-22:43:56,597 nipype.workflow INFO:
+	 Connecting erode_mask_CSF...
+220924-22:43:56,603 nipype.workflow INFO:
+	 Connecting erode_mask_WM...
+220924-22:43:56,609 nipype.workflow INFO:
+	 Connecting nuisance_regressors_generation...
+220924-22:43:56,705 nipype.workflow INFO:
+	 Connecting nuisance_regression...
+220924-22:43:56,874 nipype.workflow INFO:
+	 Connecting transform_timeseries_to_T1template...
+220924-22:43:56,989 nipype.workflow INFO:
+	 Connecting transform_bold_mean_to_T1template...
+220924-22:43:56,995 nipype.workflow INFO:
+	 Connecting transform_bold_mask_to_T1template...
+220924-22:43:57,1 nipype.workflow INFO:
+	 Connecting transform_deriv_mask_to_T1template...
+220924-22:43:57,7 nipype.workflow INFO:
+	 Connecting timeseries_extraction_AVG...
+Traceback (most recent call last):
+  File "/code/CPAC/pipeline/cpac_pipeline.py", line 1376, in build_workflow
+    wf = connect_pipeline(wf, cfg, rpool, pipeline_blocks)
+  File "/code/CPAC/pipeline/cpac_pipeline.py", line 1064, in connect_pipeline
+    wf = nb.connect_block(wf, cfg, rpool)
+  File "/code/CPAC/pipeline/engine.py", line 1277, in connect_block
+    pipe_x, opt)
+  File "/code/CPAC/timeseries/timeseries_analysis.py", line 853, in timeseries_extraction_AVG
+    'space-template_desc-brain_bold'])
+  File "/code/CPAC/pipeline/engine.py", line 297, in get_data
+    elif quick_single or len(self.get(resource)) == 1:
+  File "/code/CPAC/pipeline/engine.py", line 269, in get
+    raise LookupError(info_msg)
+LookupError: When trying to connect node block 'timeseries_extraction_AVG' to workflow 'cpac_sub-NDARHV915YXJ_ses-1' after node block 'surface_preproc': 
+
+[!] C-PAC says: None of the listed resources are in the resource pool:
+
+  ['space-template_desc-brain_bold']
+
+Options:
+- You can enable a node block earlier in the pipeline which produces these resources. Check the 'outputs:' field in a node block's documentation.
+- You can directly provide this required data by pulling it from another BIDS directory using 'source_outputs_dir:' in the pipeline configuration, or by placing it directly in your C-PAC output directory.
+- If you have done these, and you still get this message, please let us know through any of our support channels at: https://fcp-indi.github.io/
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/code/run.py", line 807, in <module>
+    run_main()
+  File "/code/run.py", line 788, in run_main
+    test_config=(1 if args.analysis_level == "test_config" else 0)
+  File "/code/CPAC/pipeline/cpac_runner.py", line 583, in run
+    raise e
+  File "/code/CPAC/pipeline/cpac_runner.py", line 580, in run
+    p_name, plugin, plugin_args, test_config)
+  File "/code/CPAC/pipeline/cpac_pipeline.py", line 443, in run_workflow
+    subject_id, sub_dict, c, p_name, num_ants_cores
+  File "/code/CPAC/pipeline/cpac_pipeline.py", line 1380, in build_workflow
+    errorstrings.index('[!] C-PAC says: The listed resource is not '
+ValueError: '[!] C-PAC says: The listed resource is not in the resource pool:' is not in list

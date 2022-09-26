@@ -1,0 +1,178 @@
+220926-10:53:44,130 nipype.workflow INFO:
+	 
+    Run command: run subjects_dir /outputs participant --pipeline_file /configs/cpac-preproc-nuisance.yaml --n_cpus 20 --mem_gb 15 --num_ants_threads 3 --skip_bids_validator --save_working_dir
+
+    C-PAC version: 1.8.4
+
+    Copyright (C) 2022  C-PAC Developers.
+    
+    This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+    and you are welcome to redistribute it under certain conditions. For
+    details, see https://fcp-indi.github.io/docs/v1.8.4/license or the COPYING and
+    COPYING.LESSER files included in the source code.
+
+    Setting maximum number of cores per participant to 20
+    Setting number of participants at once to 1
+    Setting OMP_NUM_THREADS to 1
+    Setting MKL_NUM_THREADS to 1
+    Setting ANTS/ITK thread usage to 3
+    Maximum potential number of cores that might be used during this run: 20
+
+
+220926-10:53:45,869 nipype.utils WARNING:
+	 A newer version (1.8.4) of nipy/nipype is available. You are using 1.5.1
+220926-10:53:45,931 nipype.workflow INFO:
+	 Connecting pipeline blocks:
+	 - anatomical_init
+	 - freesurfer_preproc
+	 - acpc_align_head
+	 - non_local_means
+	   - T1w
+	     - desc-preproc_T1w
+	       - desc-reorient_T1w
+	       - T1w
+	 - n4_bias_correction
+	 - freesurfer_abcd_preproc
+	 - brain_mask_afni
+	   - brain_mask_fsl
+	   - brain_mask_niworkflows_ants
+	   - brain_mask_unet
+	   - brain_mask_freesurfer_abcd
+	   - brain_mask_freesurfer_fsl_tight
+	   - brain_mask_freesurfer_fsl_loose
+	 - brain_extraction
+	 - brain_mask_T2
+	 - brain_extraction_T2
+	 - register_ANTs_anat_to_template
+	   - register_FSL_anat_to_template
+	 - overwrite_transform_anat_to_template
+	 - correct_restore_brain_intensity_abcd
+	 - tissue_seg_fsl_fast
+	   - tissue_seg_ants_prior
+	 - func_scaling
+	 - func_truncate
+	 - func_despike
+	 - func_slice_time
+	 - func_reorient
+	 - func_mean
+	 - get_motion_ref
+	 - func_motion_correct
+	 - motion_estimate_filter
+	 - bold_mask_afni
+	   - bold_mask_fsl
+	   - bold_mask_fsl_afni
+	   - bold_mask_anatomical_refined
+	   - bold_mask_anatomical_based
+	   - bold_mask_anatomical_resampled
+	   - bold_mask_ccs
+	 - bold_masking
+	 - calc_motion_stats
+	 - func_normalize
+	 - coregistration_prep_vol
+	   - coregistration_prep_mean
+	   - coregistration_prep_fmriprep
+	 - coregistration
+	 - register_ANTs_EPI_to_template
+	   - register_FSL_EPI_to_template
+	 - create_func_to_T1template_xfm
+	 - ICA_AROMA_ANTsreg
+	 - ICA_AROMA_FSLreg
+	 - ICA_AROMA_ANTsEPIreg
+	 - ICA_AROMA_FSLEPIreg
+	 - erode_mask_T1w
+	 - erode_mask_CSF
+	 - erode_mask_GM
+	 - erode_mask_WM
+	 - erode_mask_bold
+	 - erode_mask_boldCSF
+	 - erode_mask_boldGM
+	 - erode_mask_boldWM
+	 - nuisance_regressors_generation
+	   - desc-preproc_bold
+	     - desc-preproc_bold
+	       - bold
+	 - nuisance_regression
+	   - desc-preproc_bold
+	     - desc-preproc_bold
+	       - bold
+	 - warp_timeseries_to_T1template
+	   - warp_timeseries_to_T1template_dcan_nhp
+	   - warp_timeseries_to_T1template_abcd
+	     - desc-cleaned_bold
+	       - bold
+	   - single_step_resample_timeseries_to_T1template
+	 - warp_bold_mean_to_T1template
+	 - warp_bold_mean_to_EPItemplate
+	 - warp_bold_mask_to_T1template
+	 - warp_deriv_mask_to_T1template
+	 - warp_bold_mask_to_EPItemplate
+	 - warp_deriv_mask_to_EPItemplate
+	 - surface_postproc
+	 - timeseries_extraction_AVG
+	 - alff_falff
+	 - reho
+	 - smooth_func_vmhc
+	 - warp_timeseries_to_sym_template
+	 - vmhc
+	 - network_centrality
+	 - qc_snr_plot
+	 - qc_coregistration
+	 - qc_motion_plot
+	 - qc_fd_plot
+	 - qc_brain_extraction
+	 - qc_T1w_standard
+	 - qc_carpet_plot
+	 - qc_bold_registration
+	 
+220926-10:53:45,931 nipype.workflow INFO:
+	 Connecting anatomical_init...
+220926-10:53:45,935 nipype.workflow INFO:
+	 Connecting brain_mask_afni...
+220926-10:53:46,234 nipype.workflow INFO:
+	 Connecting brain_extraction...
+220926-10:53:46,237 nipype.workflow INFO:
+	 Connecting register_ANTs_anat_to_template...
+220926-10:53:46,276 nipype.workflow INFO:
+	 Connecting tissue_seg_fsl_fast...
+220926-10:53:46,304 nipype.workflow INFO:
+	 Connecting func_truncate...
+220926-10:53:46,309 nipype.workflow INFO:
+	 Connecting func_slice_time...
+220926-10:53:46,312 nipype.workflow INFO:
+	 Connecting func_reorient...
+220926-10:53:46,314 nipype.workflow INFO:
+	 Connecting func_mean...
+220926-10:53:46,315 nipype.workflow INFO:
+	 Connecting get_motion_ref...
+220926-10:53:46,316 nipype.workflow INFO:
+	 Connecting motion_correction...
+220926-10:53:46,328 nipype.workflow INFO:
+	 Connecting bold_mask_afni...
+220926-10:53:46,329 nipype.workflow INFO:
+	 Connecting bold_masking...
+220926-10:53:46,331 nipype.workflow INFO:
+	 Connecting calc_motion_stats...
+220926-10:53:46,339 nipype.workflow INFO:
+	 Connecting func_normalize...
+220926-10:53:46,340 nipype.workflow INFO:
+	 Connecting coregistration_prep_mean...
+220926-10:53:46,341 nipype.workflow INFO:
+	 Connecting coregistration...
+220926-10:53:46,356 nipype.workflow INFO:
+	 Connecting create_func_to_T1template_xfm...
+220926-10:53:46,363 nipype.workflow INFO:
+	 Connecting nuisance_regressors_generation...
+220926-10:53:46,470 nipype.workflow WARNING:
+	 Duplicate node name "nuisance_regressors_Regressor-SpikeRegression_136" found.
+220926-10:53:46,471 nipype.workflow INFO:
+	 Connecting nuisance_regression...
+220926-10:53:46,626 nipype.workflow INFO:
+	 Connecting transform_timeseries_to_T1template...
+220926-10:53:46,730 nipype.workflow INFO:
+	 Connecting transform_bold_mean_to_T1template...
+220926-10:53:46,736 nipype.workflow INFO:
+	 Connecting transform_bold_mask_to_T1template...
+220926-10:53:46,741 nipype.workflow INFO:
+	 Connecting transform_deriv_mask_to_T1template...
+220926-10:53:46,747 nipype.workflow INFO:
+	 Connecting timeseries_extraction_AVG...
